@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kost DeMocca - Kost Nyaman dan Strategis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* =================================
+           GAYA DASAR & PALET WARNA
+           ================================= */
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F4E3; /* Krem muda */
+            color: #4A4A4A; /* Abu-abu tua */
+        }
+
+        /* =================================
+           HEADER & NAVIGASI
+           ================================= */
+        header {
+            background-color: #5C4033; /* Cokelat tua pekat */
+            color: #FFF8DC; /* Putih gading */
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #7D5A4C; /* Cokelat sedang */
+            padding: 0.5rem 0;
+            text-align: center;
+            position: sticky; /* Membuat navigasi menempel di atas saat scroll */
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: #FFF8DC;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #A37F6F; /* Cokelat lebih terang */
+            color: #FFFFFF;
+        }
+
+        /* =================================
+           LAYOUT UTAMA
+           ================================= */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+
+        section {
+            padding-top: 20px; /* Memberi jarak agar tidak tertutup nav sticky */
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #5C4033;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #D5C7AF;
+            padding-bottom: 10px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #D5C7AF;
+            margin: 40px 0;
+        }
+
+        /* =================================
+           SECTION KHUSUS
+           ================================= */
+
+        /* Hero Section (Beranda) */
+        #beranda {
+            text-align: center;
+        }
+        
+        #beranda img.hero-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+        }
+
+        #beranda p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #6D4C41;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Tipe Kamar */
+        .room-type-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .room-card {
+            background-color: #FFFBF0;
+            border: 1px solid #D5C7AF;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 48%;
+            max-width: 500px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .room-details {
+            padding: 20px;
+            flex-grow: 1; /* Membuat detail memenuhi sisa ruang */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .room-details .price {
+            margin-top: auto; /* Mendorong harga dan tombol ke bawah */
+            padding-top: 15px;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .room-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #8B4513;
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .room-card .price-value {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #5C4033;
+            margin-bottom: 15px;
+        }
+
+        .room-card ul {
+            list-style: '✅ '; /* Menggunakan emoji sebagai bullet point */
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .room-card li {
+            margin-bottom: 8px;
+            color: #5A5A5A;
+        }
+
+        .room-card a {
+            background-color: #8B4513;
+            color: white;
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 7px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            align-self: flex-start; /* Tombol rata kiri */
+        }
+
+        .room-card a:hover {
+            background-color: #A0522D;
+        }
+        
+        /* === Gaya Baru: Fasilitas Bersama === */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .facility-item {
+            background-color: #FFFBF0;
+            padding: 25px 15px;
+            border-radius: 8px;
+            border: 1px solid #D5C7AF;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .facility-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .facility-item svg, .facility-item i { /* Menambahkan selektor untuk Font Awesome icon */
+            width: 50px;
+            height: 50px;
+            fill: #8B4513; /* Warna ikon disamakan dengan judul kartu */
+            color: #8B4513; /* Warna untuk Font Awesome ikon */
+            margin-bottom: 15px;
+        }
+
+        .facility-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: #5C4033;
+            margin: 0;
+            font-size: 1.1em;
+        }
+        
+        /* Galeri Foto */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer; /* Menandakan bisa diklik */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 10px;
+            font-size: 0.9em;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Modal untuk zoom gambar */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            padding-top: 60px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Lokasi & Fasilitas Umum */
+        #lokasi .location-content {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .location-map, .location-nearby {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .location-nearby h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #8B4513;
+            font-size: 1.4em;
+            margin-top: 0;
+        }
+        
+        .location-nearby ul { list-style: none; padding: 0; }
+        .location-nearby li { margin-bottom: 10px; font-size: 1.1em; color: #5A5A5A; }
+        .location-nearby li strong { color: #5C4033; }
+
+        /* Kontak */
+        #kontak {
+            text-align: center;
+            background-color: #E8DCCB;
+            padding: 40px 20px;
+            border-radius: 10px;
+        }
+
+        #kontak p { font-size: 1.2em; line-height: 1.7; }
+        
+        #kontak .whatsapp-button {
+             background-color: #25D366; color: white; padding: 15px 30px;
+             text-decoration: none; border-radius: 50px; font-weight: bold;
+             font-family: 'Montserrat', sans-serif; display: inline-block;
+             margin-top: 20px; transition: background-color 0.3s;
+        }
+        
+        #kontak .whatsapp-button:hover { background-color: #1DAE51; }
+
+        /* FOOTER */
+        footer {
+            background-color: #5C4033; color: #FFF8DC; text-align: center;
+            padding: 1.5rem 0; margin-top: 40px;
+        }
+
+        /* MEDIA QUERIES (RESPONSIF) */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            header p { font-size: 1em; }
+            nav a { padding: 0.7rem 1rem; font-size: 0.9em; }
+            section h2 { font-size: 1.8em; }
+            .room-card { width: 100%; max-width: 450px; }
+            #lokasi .location-content { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            nav a { font-size: 0.8em; padding: 0.7rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kost DeMocca</h1>
+        <p>Kost Muslimah Dekat Universitas Muhammadiyah Surakarta</p>
+    </header>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#tipe-kamar">Tipe Kamar</a>
+        <a href="#fasilitas">Fasilitas</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#lokasi">Lokasi</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+    <div class="container">
+        <section id="beranda">
+            <img src="foto/tampakdepanUMS.jpg" alt="Tampak Depan Kost DeMocca" class="hero-image">
+            <p>Selamat datang di Kost DeMocca! Kami hadir sebagai solusi hunian ideal bagi muslimah yang mencari kenyamanan, keamanan, dan lokasi strategis. Nikmati fasilitas lengkap serta suasana yang tenang dan homey untuk mendukung setiap aktivitas Anda.</p>
+        </section>
+
+        <hr>
+
+        <section id="tipe-kamar">
+            <h2>Pilihan Tipe Kamar</h2>
+            <div class="room-type-container">
+                <div class="room-card">
+                    <img src="foto/kamar.png" alt="Kamar Tipe A dengan AC">
+                    <div class="room-details">
+                        <h3>Kamar dengan AC</h3>
+                        <ul>
+                            <li>Kamar Mandi Dalam (Shower, Kloset Jongkok)</li>
+                            <li>Air Conditioner (AC)</li>
+                            <li>Kasur Spring Bed Ukuran Single</li>
+                            <li>Lemari Pakaian</li>
+                            <li>Meja dan Kursi Belajar</li>
+                        </ul>
+                        <div class="price">
+                            <p class="price-value">Mulai dari Rp 900.000 / bulan</p>
+                            <a href="#kontak">Tanya Ketersediaan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        
+        <section id="fasilitas">
+            <h2>Fasilitas Bersama</h2>
+            <div class="facilities-grid">
+                <div class="facility-item">
+                    <i class="fas fa-wifi"></i>
+                    <h4>Wi-Fi Kencang</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-snowflake"></i>
+                    <h4>Kulkas Bersama</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-video"></i>
+                    <h4>CCTV 24 Jam</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-motorcycle"></i>
+                    <h4>Area Parkir Motor</h4>
+                </div>
+                 <div class="facility-item">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Dapur Bersama</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-tshirt"></i>
+                    <h4>Jemuran Teduh</h4>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        
+        <section id="galeri">
+            <h2>Galeri Foto Kost DeMocca</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="foto/parkir.jpg" alt="Area Parkir Motor yang Luas dan Teduh">
+                    <div class="overlay">Area Parkir Motor</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/dapur.jpg" alt="Dapur Bersama dengan Peralatan Dasar">
+                    <div class="overlay">Dapur Bersama</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/kulkas.jpg" alt="Kulkas Bersama untuk Kebutuhan Penyimpanan">
+                    <div class="overlay">Kulkas Bersama</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/jemuran.jpg" alt="Area Jemuran yang Aman dan Teduh">
+                    <div class="overlay">Area Jemuran</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/tampakdepan.jpg" alt="Tampak Kost DeMocca dari Depan">
+                    <div class="overlay">Tampak Depan Kost</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/detailkamar.png" alt="Detail Interior Kamar Tipe A">
+                    <div class="overlay">Detail Kamar</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/kamarmandi.jpeg" alt="Kamar Mandi Setiap Kamar">
+                    <div class="overlay">Kamar Mandi</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/kursimeja.jpg" alt="Kelengkapan Kursi Meja dan Kasur">
+                    <div class="overlay">Kelengkapan Isi Kamar</div>
+                </div>
+            </div>
+        </section>
+        
+        <div id="myModal" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+
+        <hr>
+
+        <section id="lokasi">
+            <h2>Lokasi Strategis Kami</h2>
+            <div class="location-content">
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d247.20258269662006!2d110.76647880862129!3d-7.548642383889961!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a15fc65fdccc9%3A0x8654aec63f49629c!2skost%20de%20mocca!5e0!3m2!1sen!2sid!4v1752133558275!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="location-nearby">
+                    <h3>Kuliner Terdekat 🌮</h3>
+                    <ul>
+                        <li><strong>Warung Makan Mbak Yuni :</strong> Hanya 1 menit jalan kaki</li>
+                        <li><strong>Burjo & Roti Bakar :</strong> Hanya 2 menit jalan kaki</li>
+                        <li><strong>Angkringan Mas Bro :</strong> Hanya 3 menit jalan kaki</li>
+                        <li><strong>Indomaret & Alfamart :</strong> Hanya 4 menit jalan kaki</li>
+                    </ul>
+                    <br>
+                    <h3>Fasilitas Umum Terdekat 🏥</h3>
+                    <ul>
+                        <li><strong>Masjid Nurul Haq :</strong> 1 menit berkendara</li>
+                        <li><strong>Universitas Muhammadiyah Surakarta :</strong> 3 menit berkendara</li>
+                        <li><strong>Transmart Pabelan :</strong> 5 menit berkendara</li>
+                        <li><strong>Stasiun Purwosari :</strong> 10 menit berkendara</li>
+                        <li><strong>Rumah Sakit UNS :</strong> 7 menit berkendara</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="kontak">
+            <h2>Tertarik untuk Menyewa?</h2>
+            <p>Jangan ragu untuk bertanya atau menjadwalkan kunjungan. Hubungi kami melalui WhatsApp untuk respon cepat dan informasi lebih lanjut!</p>
+            <p><strong>Bapak Agung</strong></p>
+            <a href="https://wa.me/628121975021" class="whatsapp-button" target="_blank">Chat via WhatsApp</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Kost DeMocca. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var imgElements = document.querySelectorAll(".gallery-item img");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+
+        imgElements.forEach(function(img) {
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        });
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
